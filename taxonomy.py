@@ -1,5 +1,5 @@
 import os
-import urllib2
+import urllib
 
 
 class Taxonomy:
@@ -14,10 +14,10 @@ class Taxonomy:
         filename = os.path.join(self.data_dir, url.split('/')[-1])
         
         if os.path.exists(filename):
-            print 'Using existing copy of %s' % filename
+            print ('Using existing copy of %s' % filename)
         else:
-            print 'Downloading %s...' % filename
-            r = urllib2.urlopen(urllib2.Request(url))
+            print ('Downloading %s...' % filename)
+            r = urllib.request.urlopen(url)
             assert r.geturl() == url
             with open(filename, 'wb') as output_file:
                 data = True

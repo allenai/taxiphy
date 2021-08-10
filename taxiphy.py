@@ -2,15 +2,12 @@
 import argparse
 import Bio.Phylo as bp
 import sys
-reload(sys)
-sys.setdefaultencoding('latin1')
-from itis import Itis
+#sys.setdefaultencoding('latin1')
+#from itis import Itis
 from ncbi import Ncbi
-from gbif import Gbif
+#from gbif import Gbif
 taxonomies = {
-              'itis': Itis, 
               'ncbi': Ncbi,
-              'gbif': Gbif,
               'ALL': None,
               }
 
@@ -36,7 +33,7 @@ def main():
         
     for c in classes:
         taxonomy = c()
-        print '** %s **' % taxonomy.name
+        print ('** %s **' % taxonomy.name)
         filename = ((args.filename if hasattr(args, 'filename') else None) 
                     or ('%s_taxonomy.%s' % (taxonomy.name, args.format)))
         taxonomy.main(filename, tree_format=args.format, ids=args.id)
